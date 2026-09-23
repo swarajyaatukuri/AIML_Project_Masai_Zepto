@@ -1,0 +1,16 @@
+[
+  {
+    "MAE":19.7531086662,
+    "RMSE":41.2700504755,
+    "R2":0.3471481882,
+    "Adjusted_R2":0.3080552654,
+    "residual_variances_by_fitted_tertile":[
+      54.6276109371,
+      135.4772262973,
+      4769.7064911877
+    ],
+    "heteroscedasticity_observed":true,
+    "n_test":178,
+    "p_features_after_preprocessing":10
+  }
+]
