@@ -10,35 +10,35 @@
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 891 entries, 0 to 890
 Data columns (total 15 columns):
- #   Column       Non-Null Count  Dtype  
----  ------       --------------  -----  
- 0   survived     891 non-null    int64  
- 1   pclass       891 non-null    int64  
- 2   sex          891 non-null    object 
- 3   age          714 non-null    float64
- 4   sibsp        891 non-null    int64  
- 5   parch        891 non-null    int64  
- 6   fare         891 non-null    float64
- 7   embarked     889 non-null    object 
- 8   class        891 non-null    object 
- 9   who          891 non-null    object 
- 10  adult_male   891 non-null    bool   
- 11  deck         204 non-null    object 
- 12  embark_town  889 non-null    object 
- 13  alive        891 non-null    object 
- 14  alone        891 non-null    bool   
-dtypes: bool(2), float64(2), int64(4), object(7)
-memory usage: 92.4+ KB
+ #   Column       Non-Null Count  Dtype   
+---  ------       --------------  -----   
+ 0   survived     891 non-null    int64   
+ 1   pclass       891 non-null    int64   
+ 2   sex          891 non-null    object  
+ 3   age          714 non-null    float64 
+ 4   sibsp        891 non-null    int64   
+ 5   parch        891 non-null    int64   
+ 6   fare         891 non-null    float64 
+ 7   embarked     889 non-null    object  
+ 8   class        891 non-null    category
+ 9   who          891 non-null    object  
+ 10  adult_male   891 non-null    bool    
+ 11  deck         203 non-null    category
+ 12  embark_town  889 non-null    object  
+ 13  alive        891 non-null    object  
+ 14  alone        891 non-null    bool    
+dtypes: bool(2), category(2), float64(2), int64(4), object(5)
+memory usage: 80.7+ KB
 
 ```
 
 ### Describe
 ```text
           survived      pclass   sex         age       sibsp       parch        fare embarked  class  who adult_male deck  embark_town alive alone
-count   891.000000  891.000000   891  714.000000  891.000000  891.000000  891.000000      889    891  891        891  204          889   891   891
-unique         NaN         NaN     2         NaN         NaN         NaN         NaN        3      3    3          2    8            3     2     2
-top            NaN         NaN  male         NaN         NaN         NaN         NaN        S  Third  man      False    C  Southampton    no  True
-freq           NaN         NaN   577         NaN         NaN         NaN         NaN      644    491  413        478   59          644   549   537
+count   891.000000  891.000000   891  714.000000  891.000000  891.000000  891.000000      889    891  891        891  203          889   891   891
+unique         NaN         NaN     2         NaN         NaN         NaN         NaN        3      3    3          2    7            3     2     2
+top            NaN         NaN  male         NaN         NaN         NaN         NaN        S  Third  man       True    C  Southampton    no  True
+freq           NaN         NaN   577         NaN         NaN         NaN         NaN      644    491  537        537   59          644   549   537
 mean      0.383838    2.308642   NaN   29.699118    0.523008    0.381594   32.204208      NaN    NaN  NaN        NaN  NaN          NaN   NaN   NaN
 std       0.486592    0.836071   NaN   14.526497    1.102743    0.806057   49.693429      NaN    NaN  NaN        NaN  NaN          NaN   NaN   NaN
 min       0.000000    1.000000   NaN    0.420000    0.000000    0.000000    0.000000      NaN    NaN  NaN        NaN  NaN          NaN   NaN   NaN
@@ -53,13 +53,13 @@ max       1.000000    3.000000   NaN   80.000000    8.000000    6.000000  512.32
 |:------------|------------------:|
 | age         |           19.8653 |
 | embarked    |            0.2245 |
-| deck        |           77.1044 |
+| deck        |           77.2166 |
 | embark_town |            0.2245 |
 
 ## Cleaning decisions
 | column      |   missing_percent | strategy                | reason                                                                                               |
 |:------------|------------------:|:------------------------|:-----------------------------------------------------------------------------------------------------|
-| deck        |           77.1044 | drop_column             | >30% missing; imputation would be unreliable                                                         |
+| deck        |           77.2166 | drop_column             | >30% missing; imputation would be unreliable                                                         |
 | embarked    |            0.2245 | drop_rows               | <5% missing; dropped rows affected by this column (total rows dropped across low-missing columns: 2) |
 | embark_town |            0.2245 | drop_rows               | <5% missing; dropped rows affected by this column (total rows dropped across low-missing columns: 2) |
 | age         |           19.8653 | median_impute (28.0000) | 5%–30% missing; imputation required                                                                  |

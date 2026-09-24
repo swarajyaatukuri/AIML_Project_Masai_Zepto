@@ -1,5 +1,5 @@
 column,missing_percent,strategy,reason
-deck,77.10437710437711,drop_column,>30% missing; imputation would be unreliable
+deck,77.21661054994388,drop_column,>30% missing; imputation would be unreliable
 embarked,0.22446689113355783,drop_rows,<5% missing; dropped rows affected by this column (total rows dropped across low-missing columns: 2)
 embark_town,0.22446689113355783,drop_rows,<5% missing; dropped rows affected by this column (total rows dropped across low-missing columns: 2)
 age,19.865319865319865,median_impute (28.0000),5%–30% missing; imputation required

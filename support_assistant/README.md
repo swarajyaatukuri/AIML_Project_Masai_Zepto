@@ -21,7 +21,15 @@ The `all-MiniLM-L6-v2` model may need to be downloaded the first time it is used
 Policy-style query:
 
 ```powershell
-curl.exe -X POST http://127.0.0.1:7860/ask -H "Content-Type: application/json" -d "{\"query\":\"What is the delivery policy?\"}"
+$body = @{
+    query = "What is the delivery policy?"
+} | ConvertTo-Json
+
+Invoke-RestMethod `
+    -Uri "http://127.0.0.1:7860/ask" `
+    -Method POST `
+    -ContentType "application/json" `
+    -Body $body
 ```
 
 Expected shape:
@@ -34,22 +42,35 @@ Expected shape:
 }
 ```
 
+'''
+
+answer                                                                                                   
+------                                                                                                   
+Based on the retrieved context: Zepto delivers grocery and household essentials to serviceable pin cod...
+
+'''
+
 The exact top-three source order can depend on embedding similarity, but the top result should contain delivery-policy text.
 
 General query:
 
 ```powershell
-curl.exe -X POST http://127.0.0.1:7860/ask -H "Content-Type: application/json" -d "{\"query\":\"What is 2 + 2?\"}"
+$body = @{
+    query = "How are you?"
+} | ConvertTo-Json
+
+Invoke-RestMethod `
+    -Uri "http://127.0.0.1:7860/ask" `
+    -Method POST `
+    -ContentType "application/json" `
+    -Body $body
 ```
 
 Expected mock response:
 
-```json
-{
-  "answer": "I can only answer questions about Zepto policies right now.",
-  "sources": [],
-  "confidence": 1.0
-}
+```answer                                                      sources confidence
+------                                                      ------- ----------
+I can only answer questions about Zepto policies right now. {}             1.0
 ```
 
 ## RAG architecture
